@@ -5,6 +5,7 @@ import { HomeScreen } from '../home/pages/HomeScreen'
 import { Error404 } from '../home/pages/Error404'
 import { NavbarHome } from '../layout/NavbarHome'
 import { Piedra } from '../components/Piedra'
+import { RegisterScreen } from '../auth/pages/RegisterScreen'
 
 export const AppRouter = () => {
   return (
@@ -21,6 +22,8 @@ export const AppRouter = () => {
          <Route path='*' element={<Error404/> } />
 
          <Route path='/juego' element={<Piedra/> } />
+
+         <Route path='/registro' element={<RegisterScreen/> } />
 
     </Routes>
 

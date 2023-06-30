@@ -24,7 +24,7 @@ export const NavbarHome = () => {
          <NavLink className={"m-3"} to="/login">Login</NavLink>
          <NavLink className={"m-3"} to="/juego">Juego</NavLink>
 
-
+         <NavLink className={"m-3"} to="/registro">registro</NavLink>
          
       
           </Nav>
