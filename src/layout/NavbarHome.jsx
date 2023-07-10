@@ -13,18 +13,17 @@ export const NavbarHome = () => {
     
     <div>
 
-<Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
+<Navbar expand="lg" bg="primary" data-bs-theme="dark" className="mb-3">
+      <Container >
         
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             
-         <NavLink className={"m-3"} to="/">Home</NavLink>
-         <NavLink className={"m-3"} to="/login">Login</NavLink>
-         <NavLink className={"m-3"} to="/juego">Juego</NavLink>
-
-         <NavLink className={"m-3"} to="/registro">registro</NavLink>
+         <NavLink className={"m-3 text-decoration-none  "} to="/">Home</NavLink>
+         <NavLink className={"m-3 text-decoration-none"} to="/login">Login</NavLink>
+         <NavLink className={"m-3 text-decoration-none"} to="/juego">Juego</NavLink>
+         <NavLink className={"m-3 text-decoration-none"} to="/registro">registro</NavLink>
          
       
           </Nav>

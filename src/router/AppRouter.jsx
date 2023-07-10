@@ -6,6 +6,7 @@ import { Error404 } from '../home/pages/Error404'
 import { NavbarHome } from '../layout/NavbarHome'
 import { Piedra } from '../components/Piedra'
 import { RegisterScreen } from '../auth/pages/RegisterScreen'
+import { Footer } from '../layout/Footer'
 
 export const AppRouter = () => {
   return (
@@ -13,6 +14,7 @@ export const AppRouter = () => {
     
     <BrowserRouter>
     <NavbarHome/>
+   
     <Routes>
 
          <Route path='/login' element={<LoginScreen/> } />
@@ -27,8 +29,8 @@ export const AppRouter = () => {
 
     </Routes>
 
-
-    
+    <Footer/>
+   
     
     </BrowserRouter>
     
