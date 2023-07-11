@@ -13,8 +13,8 @@ export const NavbarHome = () => {
     
     <div>
 
-<Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
+<Navbar expand="lg" bg="primary" data-bs-theme="dark" className="mb-3">
+      <Container >
         
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
