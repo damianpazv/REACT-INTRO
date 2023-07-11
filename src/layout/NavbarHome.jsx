@@ -25,7 +25,7 @@ export const NavbarHome = () => {
          <NavLink className={"m-3"} to="/juego">Juego</NavLink>
 
          <NavLink className={"m-3"} to="/registro">registro</NavLink>
-         
+         <NavLink className={"m-3"} to="/descripcion">descripcion</NavLink>
       
           </Nav>
         </Navbar.Collapse>

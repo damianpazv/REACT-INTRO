@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { DescripcionProducto } from '../../components/DescripcionProducto';
 
 export const HomeScreen = () => {
 
@@ -11,6 +12,7 @@ export const HomeScreen = () => {
   const [precio, setPrecio] = useState("")
   const [imagen, setImagen] = useState("")
   const [productos, setproductos] = useState([])
+  const zapatilla="nike";
 
   const submitForm = (e) => {
 e.preventDefault();
@@ -21,6 +23,8 @@ const nuevoProducto={
   imagen:imagen
 }
 setproductos([...productos,nuevoProducto]);
+
+
 
 setNombre("")
 setPrecio("")
@@ -68,7 +72,7 @@ return(
     <Card.Text>
       {producto.precio}
     </Card.Text>
-    <Button variant="primary">comprar</Button>
+    <Button variant="primary">Ver producto</Button>
   </Card.Body>
 </Card>
 
