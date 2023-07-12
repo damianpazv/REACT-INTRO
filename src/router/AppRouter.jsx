@@ -27,7 +27,8 @@ export const AppRouter = () => {
 
          <Route path='/registro' element={<RegisterScreen/> } />
 
-<Route path='/descripcion' element={<DescripcionProducto/> } />
+{/* <Route path='/descripcion' element={<DescripcionProducto/> } /> */}
+
     </Routes>
 
     <Footer/>

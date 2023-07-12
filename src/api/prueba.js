@@ -2,7 +2,7 @@ import axios from "axios";
 
 const pruebaApi= axios.create(
     {
-        baseURL: "https://localhost:4020"
+        baseURL: "http://localhost:4020"
     }
 );
 
