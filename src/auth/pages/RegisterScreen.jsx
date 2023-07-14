@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2'
 import pruebaApi from '../../api/prueba';
+
 export const RegisterScreen = () => {
   
    const [name, setName] = useState("");

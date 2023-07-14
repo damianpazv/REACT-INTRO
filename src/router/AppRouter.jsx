@@ -7,6 +7,7 @@ import { NavbarHome } from '../layout/NavbarHome'
 import { Piedra } from '../components/Piedra'
 import { RegisterScreen } from '../auth/pages/RegisterScreen'
 import { Footer } from '../layout/Footer'
+import { AdminScreen } from '../home/pages/AdminScreen'
 
 export const AppRouter = () => {
   return (
@@ -27,11 +28,13 @@ export const AppRouter = () => {
 
          <Route path='/registro' element={<RegisterScreen/> } />
 
+         <Route path='/admin' element={<AdminScreen/> } />
+
 {/* <Route path='/descripcion' element={<DescripcionProducto/> } /> */}
 
     </Routes>
 
-    <Footer/>
+    {/* <Footer/> */}
    
     
     </BrowserRouter>
