@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import pruebaApi from '../../api/prueba';
 import { useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
+import { Footer } from '../../layout/Footer';
 
 export const AdminScreen = () => {
 
@@ -51,6 +52,7 @@ export const AdminScreen = () => {
 
   return (
     <>
+<div className='container '>
 
 <h2 className='m-3 text-center'>USUARIOS</h2>
 
@@ -106,6 +108,15 @@ return(
 })}
     </tbody>
     </Table>
+
+
+
+
+
+  
+</div>
+
+
 
 
 

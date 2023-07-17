@@ -4,17 +4,13 @@ export const Footer = () => {
   return (
     <div>
 
-<footer>
-<div className='bg-body-secondary text-center'style={{bottom:"0",position:'absolute',width:"100%"}}>
-<p className='text-center mt-2'>
-    Todos los derechos reservados
-</p>
-
-</div>
-
-
-
-</footer>
+<footer className="footer mt-auto py-3 bg-primary " >
+      <div className="container text-center">
+        <span className="text-light">
+          © {new Date().getFullYear()} Mi Sitio Web. Todos los derechos reservados.
+        </span>
+      </div>
+    </footer>
 
 
 
