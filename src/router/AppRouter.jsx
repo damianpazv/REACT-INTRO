@@ -8,6 +8,7 @@ import { Piedra } from '../components/Piedra'
 import { RegisterScreen } from '../auth/pages/RegisterScreen'
 import { Footer } from '../layout/Footer'
 import { AdminScreen } from '../home/pages/AdminScreen'
+import { ModalForm } from '../components/ModalForm'
 
 export const AppRouter = () => {
   return (
@@ -29,6 +30,8 @@ export const AppRouter = () => {
          <Route path='/registro' element={<RegisterScreen/> } />
 
          <Route path='/admin' element={<AdminScreen/> } />
+
+         <Route path='/modalForm' element={<ModalForm/> } />
 
 {/* <Route path='/descripcion' element={<DescripcionProducto/> } /> */}
 

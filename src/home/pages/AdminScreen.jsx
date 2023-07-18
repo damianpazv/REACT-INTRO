@@ -3,6 +3,7 @@ import pruebaApi from '../../api/prueba';
 import { useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import { Footer } from '../../layout/Footer';
+import { ModalForm } from '../../components/ModalForm';
 
 export const AdminScreen = () => {
 
@@ -109,8 +110,9 @@ return(
     </tbody>
     </Table>
 
+    <ModalForm />
 
-
+  
 
 
   
