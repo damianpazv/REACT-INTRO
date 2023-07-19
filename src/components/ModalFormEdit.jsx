@@ -6,25 +6,24 @@ import Modal from 'react-bootstrap/Modal';
 import pruebaApi from '../api/prueba';
 import Swal from 'sweetalert2'
 
+export const ModalFormEdit = (props) => {
 
-export const ModalForm = () => {
 
+    const [showedit, setShowedit] = useState(false);
 
-    const [show, setShow] = useState(false);
+    const handleCloseEdit = () => setShowedit(false);
+    const handleShowEdit = () => setShowedit(true);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const  [formData,setFormData ]= useState({
+    const  [formDataEdit,setFormDataEdit ]= useState({
         name:"",
         price: "",
         description:"",
     })
 
-const handleChange = (e) => {
+const handleChangeEdit = (e) => {
 
-setFormData({
-    ...formData,
+setFormDataEdit({
+    ...formDataEdit,
     [e.target.name]: e.target.value,
 });
 
@@ -34,10 +33,10 @@ setFormData({
 
 }
 
-const handleSubmit = (e) => {
+const handleSubmitEdit = (e) => {
     e.preventDefault();
     
-    const {name,price,description}=formData
+    const {_id,name,price,description}=formDataEdit
 
     //validaciones....
 
@@ -63,16 +62,16 @@ else if(price<0)
 
 
     
-    AgregarProductsDB(name,price,description)
+    EditarProductsDB(_id,name,price,description)
     
     };
 
-const AgregarProductsDB= async (name,price,description) =>
+const EditarProductsDB= async (_id,name,price,description) =>
 {
 
     try{
-        const resp=await pruebaApi.post("/admin/new",{name,price,description});
-        
+        const resp=await pruebaApi.put("/admin/editar",{_id,name,price,description});
+        console.log(resp);
 
     }
 
@@ -88,27 +87,27 @@ const AgregarProductsDB= async (name,price,description) =>
 
 
 
-<Button variant="primary" onClick={handleShow} >
-        <h5>+</h5>
+<Button variant="primary" onClick={handleShowEdit} >
+        <h5>e</h5>
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={showedit} onHide={handleCloseEdit}>
         <Modal.Header closeButton>
-          <Modal.Title>Agregar Producto</Modal.Title>
+          <Modal.Title>Editar Producto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmitEdit}>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Nombre</Form.Label>
               <Form.Control
               maxLength={20}
                 type="text"
-                placeholder="Zapatillas"
+                
                 name='name'
-                 value={formData.name}
+                 value={formDataEdit.name}
                 autoFocus
-                onChange={handleChange}
+                onChange={handleChangeEdit}
               />
             </Form.Group>
 
@@ -117,10 +116,10 @@ const AgregarProductsDB= async (name,price,description) =>
               <Form.Control
               
                 type="number"
-                placeholder="15000"
+                
                 name='price'
-                value={formData.price}
-                onChange={handleChange}
+                value={formDataEdit.price}
+                onChange={handleChangeEdit}
                 
               />
             </Form.Group>
@@ -134,14 +133,14 @@ const AgregarProductsDB= async (name,price,description) =>
               <Form.Label>Descripcion</Form.Label>
               <Form.Control as="textarea" rows={3} 
               name='description' 
-              value={formData.description}
-              onChange={handleChange}
+              value={formDataEdit.description}
+              onChange={handleChangeEdit}
               maxLength={50}
               />
               
             </Form.Group>
             <Button variant="primary" type='submit' 
-          onClick={handleClose}
+          onClick={handleCloseEdit}
           >
             Agregar
           </Button>
