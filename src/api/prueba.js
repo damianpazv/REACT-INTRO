@@ -6,4 +6,8 @@ const pruebaApi= axios.create(
     }
 );
 
+pruebaApi.interceptors.request.use((config)=>{
+    config.headers={ "x-token": localStorage.getItem("token")   };
+})
+
 export default pruebaApi;

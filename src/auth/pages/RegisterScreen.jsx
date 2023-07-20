@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useState } from 'react';
+
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router';
@@ -8,30 +11,57 @@ import pruebaApi from '../../api/prueba';
 export const RegisterScreen = () => {
   
    const [name, setName] = useState("");
-   const [edad, setEdad] = useState("");
+  //  const [edad, setEdad] = useState("");
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
-   const [confirmContrasena, setConfirmContrasena] = useState("");
+  //  const [confirmContrasena, setConfirmContrasena] = useState("");
 
    const emailRegex= /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
    const isvalidEmail=emailRegex.test(email);
 
    const navigate= useNavigate();
+   
+   const cargarUsersDB= async () =>
+   {
+
+       try{
+           const resp=await pruebaApi.get("/admin/usuarios");
+           const usuariosdb= await(resp.data.usuarios);
+           let usuariomail= await usuariosdb.find((usuario)=>usuario.email===email);
+           
+            if(usuariomail)
+{
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'ya existe un usuario registrado con ese email',
+        
+      })
+}
+
+       }
+
+       catch(error)
+       {
+       console.log(error);
+       }
+   }
 
    const handleSubmit = async(e) =>
    {
 e.preventDefault() ;
 
+cargarUsersDB();
 
-// if(name===""|| edad===""|| email===""|| password===""|| confirmContrasena==="")
-// {
-//     Swal.fire({
-//         icon: 'error',
-//         title: 'Oops...',
-//         text: 'Todos los campos son obligatorios',
+if(name.trim()===""|| email.trim()===""|| password.trim()==="")
+{
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Todos los campos son obligatorios',
         
-//       })
-// }
+      })
+}
 // else if(edad<18)
 // {
 //     Swal.fire({
@@ -41,33 +71,33 @@ e.preventDefault() ;
         
 //       })
 // }
-// else if(name.length<3)
-// {
-//     Swal.fire({
-//         icon: 'error',
-//         title: 'Oops...',
-//         text: 'el nombre debe tener mas de 3 caracteres',
+else if(name.length<3)
+{
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'el nombre debe tener mas de 3 caracteres',
         
-//       })
-// }
-// else if(!isvalidEmail)
-// {
-//     Swal.fire({
-//         icon: 'error',
-//         title: 'Oops...',
-//         text: 'debe ser un email valido',
+      })
+}
+else if(!isvalidEmail)
+{
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'debe ser un email valido',
         
-//       })
-// }
-// else if(password.length<5)
-// {
-//     Swal.fire({
-//         icon: 'error',
-//         title: 'Oops...',
-//         text: 'La contraseña debe tener mas de 5 caracteres',
+      })
+}
+else if(password.length<5)
+{
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'La contraseña debe tener mas de 5 caracteres',
         
-//       })
-// }
+      })
+}
 // else if(password!=confirmContrasena)
 // {
 //     Swal.fire({
@@ -77,18 +107,22 @@ e.preventDefault() ;
         
 //       })
 // }
-// else{
+
+
+
+else{
      
-// Swal.fire({
-//     position: 'center',
-//     icon: 'success',
-//     title: 'Usuario registrado correctamente',
-//     showConfirmButton: false,
-//     timer: 1500
-//   })
+Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Usuario registrado correctamente',
+    showConfirmButton: false,
+    timer: 1500
+  })
 
 try {
   const resp= await pruebaApi.post("/auth/new",{name,email,password});
+  localStorage.setItem("token",resp.data.token);
 
 }
 
@@ -105,7 +139,7 @@ console.log(error);
   // }, 2000);
 }
 
-   //}
+   }
 
     return (
    
@@ -147,3 +181,4 @@ console.log(error);
 
   )
 }
+
