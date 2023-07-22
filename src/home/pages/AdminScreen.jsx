@@ -8,12 +8,15 @@ import Button from 'react-bootstrap/Button';
 import { ModalFormEdit } from '../../components/ModalFormEdit';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router';
+
+
 
 export const AdminScreen = () => {
 
     const [cargarUsuarios, setcargarUsuarios] = useState([]);
     const [cargarProductos, setcargarProductos] = useState([]);
-
+const navigate=useNavigate();
     const cargarUsersDB= async () =>
     {
 
@@ -57,6 +60,11 @@ export const AdminScreen = () => {
         catch(error)
         {
         console.log(error);
+        if(error.response.status===401){
+          localStorage.removeItem("token");
+          navigate("/login");
+        }
+     
         }
     }
     
@@ -70,6 +78,10 @@ export const AdminScreen = () => {
   catch(error)
   {
   console.log(error);
+  if(error.response.status===401){
+    localStorage.removeItem("token");
+    navigate("/login");
+  }
   }
   };
 
@@ -132,6 +144,10 @@ export const AdminScreen = () => {
         catch(error)
         {
         console.log(error);
+        if(error.response.status===401){
+          localStorage.removeItem("token");
+          navigate("/login");
+        }
         }
     }
 

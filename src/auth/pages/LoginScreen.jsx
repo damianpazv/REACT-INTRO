@@ -70,7 +70,7 @@ else{
 
 
   const resp= await pruebaApi.post("/auth/login",{email,password});
-  console.log(resp);
+  //console.log(resp);
   localStorage.setItem("token",resp.data.token);
 }
 
@@ -87,9 +87,9 @@ console.log(error);
 
 
 
- // setTimeout(() => {
- //   navigate("/");
- // }, 2000);
+ setTimeout(() => {
+   navigate("/");
+ }, 2000);
 
 
   }
